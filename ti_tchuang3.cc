@@ -225,11 +225,6 @@ char * set_line( text_t *txt, int index, char * new_line) {
     // Empty tree
     return NULL;
   }
-  else if (txt->right == NULL) {
-    // Leaf
-    return (char*)txt->left;
-  }
-
   text_t *tmp = txt;
   while (tmp->right != NULL) {
     // Traverse down tree to find the key
@@ -259,10 +254,7 @@ void insert_line( text_t * txt, int index, char * new_line) {
 
   // Empty tree
   if (txt->left == NULL) {
-    txt->left = (text_t *) new_line;
-    txt->nodeCount = 1;
-    txt->right = NULL;
-    txt->height = 0;
+    append_line(txt, new_line);
     return;
   }
 
